@@ -1,9 +1,9 @@
 name: Secuencial jobs
 on:
   push:
-    branches: [ feature/secuencialjobs ]
+    branches: [master,dev]
   pull_request:
-    branches: [ feature/secuencialjobs ]
+    branches: [master,dev]
 jobs:
   firstJob:
     runs-on: ubuntu-latest
