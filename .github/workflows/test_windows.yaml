@@ -2,13 +2,11 @@ name: My workflow
 
 on:
   push:
-    branches: |
-      - master
-      - dev
+    branches: [master,dev]
     # Nosotros podemos espesificar las ramas en las que queremos que se ejecute este yaml pero tambien podemos hacerlo de
     # la siguiente manera:
     # branches: [master,dev]
-job:
+jobs:
   build:
     runs-on: windows-latest
     # Aqui al igual que con las branch podemos modificar la sintaxis de nuestra lista:
@@ -28,12 +26,12 @@ job:
         run: dotnet test --no-restore --verbosity normal
       #Con el uso de acciones de github en el marketplace, podemos estructurar mejor
       #nuestro archivo yaml
-      # Añado el uso de artefactos -{it is an action de github [marketplace of github]}
+      #add el uso de artefactos -{it is an action de github [marketplace of github]}
       - name: Publish the code
         run: dotnet publish -c Release -o ${{ env.DOTNET_ROOT }}/webapp
         working-directory: ./Lemoncodeweb
       - name: Upload artifact
-        uses: actions/upload artifact@v1
+        uses: actions/upload-artifact@v2
         with:
           name: webapp-artifact
           path: ${{ env.DOTNET_ROOT }}/webapp
