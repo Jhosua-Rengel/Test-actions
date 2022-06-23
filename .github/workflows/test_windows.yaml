@@ -31,7 +31,7 @@ jobs:
         run: dotnet publish -c Release -o ${{ env.DOTNET_ROOT }}/webapp
         working-directory: ./Lemoncodeweb
       - name: Upload artifact
-        uses: actions/upload artifact@v1
+        uses: actions/upload-artifact@v2
         with:
           name: webapp-artifact
           path: ${{ env.DOTNET_ROOT }}/webapp
